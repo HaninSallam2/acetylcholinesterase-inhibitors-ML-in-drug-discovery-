@@ -1,17 +1,17 @@
 # acetylcholinesterase-inhibitors-ML-in-drug-discovery-
 
-This project implements the Tuna Swarm Optimization (TSO) algorithm to find optimal hyperparameters for various machine learning models. It includes implementations for Random Forest, Support Vector Machine (SVM), Decision Tree, K-Nearest Neighbors (KNN), and Multilayer Perceptron (MLP) classifiers, and a stacking model on down samples and over samples and inbalanced acetylcholinesterase inhibitors targets that was downloaded from Chembel and preprocessed and labeled into active, inactive, and intermediate molecules based on the IC50 values. It also contains feature selection using Variance Thresholding and Recursive Feature Elimination (RFE). 
+This project implements the Tuna Swarm Optimization (TSO) algorithm to find optimal hyperparameters for various machine-learning models. It includes implementations for Random Forest, Support Vector Machine (SVM), Decision Tree, K-Nearest Neighbors (KNN), and Multilayer Perceptron (MLP) classifiers, and a stacking model on down samples and over samples and unbalanced acetylcholinesterase inhibitors targets that was downloaded from Chembel and preprocessed and labeled into active, inactive, and intermediate molecules based on the IC50 values. It also contains feature selection using Variance Thresholding and Recursive Feature Elimination (RFE). 
 
-## Pipeline overveiw
+## Pipeline overview
 
 - Downloaded acetylcholinesterase human targets from Chembel and preprocessed the data by removing duplicates and NAs
-- Got the PubChem molecular discriptors from PaDEL and divided th molecules into 3 classes (active, inactive, and intermediate)
-- Over sampling and under sampling
-- Removed low variance features
-- Recursive Feature Elimination (RFE) with rondom forest
+- Got the PubChem molecular descriptors from PaDEL and divided th molecules into 3 classes (active, inactive, and intermediate)
+- Over-sampling and under-sampling
+- Removed low-variance features
+- Recursive Feature Elimination (RFE) with random forest
 - implemented TSO 
   ![image](https://github.com/user-attachments/assets/5cdd973e-bb2c-4ff3-b64a-8b8a74499ecb)
-- Excuted the hyperparameters and best accurcies of each model from the tso_optimization() function
+- Executed the hyperparameters and best accuracies of each model from the tso_optimization() function
 ### Prerequisites
 
 - Python 3.7 or higher
@@ -130,7 +130,7 @@ The script performs several preprocessing steps on the bioactivity data:
 ### Data Merging
 
 -   The generated descriptor file from PaDEL, named `descriptors_output.csv` is merged with the preprocessed bioactivity data based on matching molecule IDs to produce final datasets.
--   Two final datasets are created : one with the class labels (`bioactivity_discriptors_3class_pubchem_fp_final.csv`) and the other with the pIC50 values (`bioactivity_discriptors_pic50_pubchem_fp_final.csv`)
+-   Two final datasets are created: one with the class labels (`bioactivity_discriptors_3class_pubchem_fp_final.csv`) and the other with the pIC50 values (`bioactivity_discriptors_pic50_pubchem_fp_final.csv`)
 
 ## Results and Evaluation
 
