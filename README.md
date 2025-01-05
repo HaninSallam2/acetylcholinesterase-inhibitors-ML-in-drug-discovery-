@@ -5,7 +5,7 @@ This project implements the Tuna Swarm Optimization (TSO) algorithm to find opti
 ## Pipeline overview
 
 - Downloaded acetylcholinesterase human targets from Chembel and preprocessed the data by removing duplicates and NAs
-- Got the PubChem molecular descriptors from PaDEL and divided th molecules into 3 classes (active, inactive, and intermediate)
+- Generates PubChem fingerprints using PaDEL-Descriptor and divided the molecules into 3 classes (active, inactive, and intermediate)
 - Over-sampling and under-sampling
 - Removed low-variance features
 - Recursive Feature Elimination (RFE) with random forest
@@ -24,18 +24,9 @@ This project implements the Tuna Swarm Optimization (TSO) algorithm to find opti
 
 ### Installation
 
+. **Download and setup PaDEL-Descriptor:**
 
-1.  **Install the required libraries:**
-
-    ```bash
-    pip install pandas numpy scikit-learn
-    ```
-
-2. **Download and setup PaDEL-Descriptor:**
-
-  -  Download PaDEL-Descriptor with 
-! wget https://github.com/dataprofessor/bioinformatics/raw/master/padel.zip
-! wget https://github.com/dataprofessor/bioinformatics/raw/master/padel.sh
+  You can find the full downloading and usage code on preprop_acetylcholinesterase_final.ipynb file
 ## Usage
 ### Data Preparation
 
@@ -107,8 +98,6 @@ This project uses:
 -   **Variance Thresholding:** To remove features with low variance, filtering out constant and almost-constant variables.
 -   **Recursive Feature Elimination (RFE):** A method to select features by recursively considering smaller and smaller sets of features by removing features based on the model's importance.
 
-## Data Preprocessing
-
 ### Bioactivity Data Processing
 
 The script performs several preprocessing steps on the bioactivity data:
@@ -119,18 +108,10 @@ The script performs several preprocessing steps on the bioactivity data:
     - `inactive` for values >= 300
     - `active` for values <= 100
     - `intermediate` for values between 100 and 300.
--   Removes values outside of range for the data
+-   Removes values outside of the range for the data
  -   Calculates pIC50 values from IC50 values.
 -   Averages pIC50 values for molecules with duplicate `canonical_smiles` and selects the most common class.
 
-### Molecular Descriptor Generation
-
--   The `padel.sh` script utilizes PaDEL-Descriptor to generate PubChem fingerprints for the molecules from the `molecule.smi` file.
-
-### Data Merging
-
--   The generated descriptor file from PaDEL, named `descriptors_output.csv` is merged with the preprocessed bioactivity data based on matching molecule IDs to produce final datasets.
--   Two final datasets are created: one with the class labels (`bioactivity_discriptors_3class_pubchem_fp_final.csv`) and the other with the pIC50 values (`bioactivity_discriptors_pic50_pubchem_fp_final.csv`)
 
 ## Results and Evaluation
 
@@ -139,12 +120,6 @@ The optimization process will output:
 -   The best hyperparameter values found.
 -   The corresponding cross-validation accuracy.
 
-The script will also save:
-
--   The features selected after Variance Thresholding as `X_low_variance_removed_3class.csv`.
--   The selected features after Recursive Feature Elimination as `X_recursive_feature_elimination.csv`.
--   The dataset with  bioactivity labels (`bioactivity_discriptors_3class_pubchem_fp_final.csv`)
--   The dataset with pIC50 values  (`bioactivity_discriptors_pic50_pubchem_fp_final.csv`)
 
 
 ## License
