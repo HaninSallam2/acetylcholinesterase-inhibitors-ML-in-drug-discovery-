@@ -146,9 +146,6 @@ The script will also save:
 -   The dataset with  bioactivity labels (`bioactivity_discriptors_3class_pubchem_fp_final.csv`)
 -   The dataset with pIC50 values  (`bioactivity_discriptors_pic50_pubchem_fp_final.csv`)
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit pull requests.
 
 ## License
 
